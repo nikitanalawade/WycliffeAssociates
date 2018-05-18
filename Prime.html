@@ -1,0 +1,84 @@
+ <html>
+
+<head>
+<title>Test Prime</title>
+</head>
+
+<style>
+body {
+    background-color: black;
+    background-image: url('number.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+   }
+
+h2 {
+    color: black;
+   }
+</style>
+
+<body>
+<h2>Testing Prime Numbers</h2>
+
+<form onsubmit="return false">
+<table>
+
+<tr>
+<td>Enter Number</td><td><input type="text" name="number" id="number" pattern="\d*" title="Enter only positive numbers" required ></input>
+</td>
+</tr>
+
+<tr>
+<td></td><td><button type="submit" onclick="check()">Prime?</button>
+<button type="reset">Reset</button></td>
+</tr>
+
+<tr>
+<td>Result</td><td><input type="text" id="output" size="30" value="" readonly="readonly"></td>
+</tr>
+
+</table>
+</form>
+
+<script type="text/javascript">
+	function check() {
+		var pattern = document.getElementById("number");
+		var input = document.getElementById("number").value;
+		if(pattern.validity.patternMismatch==false && input)
+		{
+			var i;
+			var count=0;
+			if(input==0)
+				count=2;
+			else if(input==1)
+				count=3;
+			else
+			{
+				for(i=2;i<=input/2;i++)
+				{    
+					if(input%i==0)
+					{
+						count=1;
+						break;
+					}
+					else
+					count=0; 
+				}
+			}
+			if(count==0) 
+				document.getElementById("output").value="Number is Prime";
+			else if(count==2)
+				document.getElementById("output").value="0 is not valid";
+			else if(count==3)
+				document.getElementById("output").value="1 is neither prime nor composite";
+			else
+				document.getElementById("output").value="Number is Composite";
+		}	 
+		}
+</script>
+
+</body>
+</html>
+
+
